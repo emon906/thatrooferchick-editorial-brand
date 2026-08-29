@@ -1,24 +1,50 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/site/Nav";
+import { Hero } from "@/components/site/Hero";
+import { Journey } from "@/components/site/Journey";
+import { Services } from "@/components/site/Services";
+import { VideoBand, WorkVideos } from "@/components/site/VideoBand";
+import { BehindTheRoof, WhyMe } from "@/components/site/Story";
+import { BeforeAfter } from "@/components/site/BeforeAfter";
+import { Masonry } from "@/components/site/Gallery";
+import { Reviews } from "@/components/site/Reviews";
+import { Social, FinalCta, Footer } from "@/components/site/Closing";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "That Roofer Chick — Ottawa Roofing Contractor, 14 Years On The Roof";
+const description =
+  "Ottawa roofing by That Roofer Chick: 14 years from labourer to contractor. Roof replacement, metal roofing and repairs. 100% recommend. Call +1 613-801-8582.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="bg-ivory">
+      <Nav />
+      <Hero />
+      <Journey />
+      <Services />
+      <VideoBand />
+      <BehindTheRoof />
+      <BeforeAfter />
+      <WorkVideos />
+      <WhyMe />
+      <Masonry />
+      <Reviews />
+      <Social />
+      <FinalCta />
+      <Footer />
+    </main>
   );
 }
