@@ -49,17 +49,15 @@ function Compare({
           height={900}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
-          <img
-            src={before}
-            alt={`${label} before`}
-            loading="lazy"
-            width={1200}
-            height={900}
-            className="h-full w-full object-cover"
-            style={{ width: ref.current?.offsetWidth ?? "100%", maxWidth: "none" }}
-          />
-        </div>
+        <img
+          src={before}
+          alt={`${label} before`}
+          loading="lazy"
+          width={1200}
+          height={900}
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+        />
         <div
           className="absolute inset-y-0 w-px bg-ivory/90"
           style={{ left: `${pos}%` }}
